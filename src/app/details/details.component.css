@@ -1,0 +1,44 @@
+.image img{
+    width: 120%;
+    height: 24rem;
+}
+.description{
+    width:23%;
+    height: 24rem;
+    background:rgb(210, 233, 236);
+    display: inline-block;
+    margin-left: 22%;
+    padding-left: 1%;
+    margin-top: 2%;
+    position: absolute;
+}
+.footer{
+margin-top: 15%;
+padding-top: 20%;
+}
+.image{
+    padding-left: 3%;
+    padding-top: 2%;
+    display: inline-block;
+}
+.price{
+    position: absolute;
+    bottom: 0;
+}
+.right {
+    float: right !important;
+}
+.left{
+    float: left !important;
+}
+.description{
+    border: 4px double black;
+}
+.description p{
+    font-family:cursive;
+}
+.bottom{
+    padding-left: 3%;
+    padding-top: 2%;
+    width:58%;
+}

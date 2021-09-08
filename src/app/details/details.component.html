@@ -1,0 +1,34 @@
+<body>
+<div class="top"  >
+    <div class="image">
+        <img src="{{certificate.picture}}">
+    </div>
+    <div class="description" >
+        <h3>{{certificate.name}}</h3>
+        <p>
+        {{certificate.description}} 
+        </p>
+        <div class="footer">
+            <p><i>Time left to buy</i><br><b>{{certificate.duration}} days</b></p>
+            <p></p>
+        </div>
+        <div class="card-footer  pt-0 border-top-0 bg-transparent">
+            <div>
+                <span class="left"><b>${{certificate.price}}</b></span>
+                <span class="right">
+                    <a *ngIf="authService.hasRole('USER')" (click)="addCertificateToCart(certificate.id, 1)" class="btn btn-outline-dark">Add to cart </a>
+                    <a *ngIf="authService.hasRole('ADMIN')" (click)="editCertificate(certificate.id)" class="btn btn-outline-dark" >Edit item </a>
+            </span>
+            </div>
+
+        </div>
+    
+    </div>
+
+</div>
+<div class="bottom">
+<h5>Item detailed description</h5>
+<p>In information systems, a tag is a keyword or term assigned to a piece of information (such as an Internet bookmark, digital image, database record, or computer file).
+     This kind of metadata helps describe an item and allows it to be found again by browsing or searching</p>
+</div>
+</body>

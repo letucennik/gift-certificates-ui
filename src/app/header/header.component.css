@@ -1,0 +1,26 @@
+.container{
+    padding-left:13%;
+  }
+  #logo{
+    width: 25px;
+    height: 25px;
+  }
+  .rigthBar{
+  padding-right: 7%;
+  }
+  .login{
+    margin-left:1%;
+   
+  }
+  .login a{
+    font-size: 15px;
+    color: black;
+    font-style: italic;
+    font-weight: bold;
+  }
+  /* Style to create scroll bar in dropdown */ 
+  .scrollable-dropdown{
+      height: auto;
+      max-height:320px;  /* Increase / Decrease value as per your need */
+      overflow-x: hidden;
+  }
