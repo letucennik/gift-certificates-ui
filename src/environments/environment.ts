@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:'http://localhost:8080/web_1_0_SNAPSHOT_war/rest/v1',
+  apiUrl:'http://localhost:8080/rest/v1',
 };
 
 /*

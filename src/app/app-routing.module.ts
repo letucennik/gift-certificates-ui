@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LoginComponent} from './login/login.component';
+import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NewItemComponent } from './new-item/new-item.component';
 import { MainComponent } from './main/main.component';
@@ -14,36 +14,36 @@ import { UserRole } from './_enums/user-role.enum';
 import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
 const routes: Routes = [
   {
-    path:'',
-    component:MainComponent,
+    path: '',
+    component: MainComponent,
   },
   {
-    path:'register',
-    component:RegisterComponent
+    path: 'register',
+    component: RegisterComponent
   },
   {
-    path:'new-item',
-    component:NewItemComponent,
+    path: 'new-item',
+    component: NewItemComponent,
     canActivate: [AuthGuard],
     data: {
-      role:  UserRoleUtil.toString(UserRole.ADMIN)
+      role: UserRoleUtil.toString(UserRole.ADMIN)
     }
   },
   {
-    path:'login',
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path:'details',
-    component:DetailsComponent
+    path: 'details',
+    component: DetailsComponent
   },
   {
-    path:'checkout',
-    component:CheckoutComponent
+    path: 'checkout',
+    component: CheckoutComponent
   },
   {
-    path:'logout',
-    component:LogoutComponent
+    path: 'logout',
+    component: LogoutComponent
   },
   {
     path: 'certificates/:id',
@@ -54,19 +54,19 @@ const routes: Routes = [
     component: EditCertificateComponent,
     canActivate: [AuthGuard],
     data: {
-      role:  UserRoleUtil.toString(UserRole.ADMIN)
+      role: UserRoleUtil.toString(UserRole.ADMIN)
     }
   },
   {
-    path:'403',
+    path: '403',
     component: ForbiddenComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{ onSameUrlNavigation: 'reload' })],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
-  
- }
+
+}

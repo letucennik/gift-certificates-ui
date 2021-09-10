@@ -7,15 +7,15 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AppService {
     private subject = new Subject<any>();
-    static token:string;
+    static token: string;
     constructor(private http: HttpClient) {
     }
-    sendClickEvent(token:string) {
-        AppService.token=token;
+    sendClickEvent(token: string) {
+        AppService.token = token;
         this.subject.next();
     }
 
-    sendReloadEvent(){
+    sendReloadEvent() {
         this.subject.next();
     }
 

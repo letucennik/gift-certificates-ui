@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import { AuthenticationService } from './authentication.service';
 import { Order } from '../model/order';
 import { OrderRequest } from '../model/order-request';
+import { OrderItem } from '../model/order-item';
 @Injectable({
     providedIn: 'root'
   })
@@ -18,6 +19,10 @@ export class OrderService{
 
       public createOrder(orderRequest:OrderRequest):Observable<Order>{
         return this.http.post<OrderRequest>(this.ordersUrl,orderRequest);
+      }
+
+      public addItemToOrder(orderId:number, orderItem:OrderItem){
+        return this.http.post<Order>(environment.apiUrl + '/users/'+this.authService.getId()+'/'+'orders/'+orderId,orderItem);
       }
 
       public findAllUserOrders():Observable<Order[]>{

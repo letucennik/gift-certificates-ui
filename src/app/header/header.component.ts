@@ -14,12 +14,12 @@ import { AuthenticationService } from '../_services/authentication.service';
 export class HeaderComponent implements OnInit {
 
   tags: Tag[] = [];
-  selectedOption?: string="All categories";
+  selectedOption?: string = "All categories";
 
-  selectedTag?:Tag;
+  selectedTag?: Tag;
 
   timeout: any = null;
-  constructor(private tagService: TagService, private router: Router, private sharedService: AppService,public authService: AuthenticationService,) { }
+  constructor(private tagService: TagService, private router: Router, private sharedService: AppService, public authService: AuthenticationService,) { }
 
   ngOnInit(): void {
     this.getTags();
@@ -31,22 +31,22 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  refresh(){
+  refresh() {
     this.sharedService.sendReloadEvent();
   }
 
-  selectChangeHandler (event: any) {
+  selectChangeHandler(event: any) {
     //update the ui
-    CertificateService.tagName=event.target.value;
+    CertificateService.tagName = event.target.value;
   }
-  
+
 
   search(event: any): void {
     clearTimeout(this.timeout);
     var $this = this;//debounce
-      if (event.keyCode != 13) {
-        $this.doSearch(event.target.value);
-      }
+    if (event.keyCode != 13) {
+      $this.doSearch(event.target.value);
+    }
 
   }
 

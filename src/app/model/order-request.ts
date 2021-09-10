@@ -1,4 +1,4 @@
 import { OrderItem } from "./order-item";
-export class OrderRequest{
-    certificates?:OrderItem[]=[];
+export class OrderRequest {
+    certificates?: OrderItem[] = [];
 }

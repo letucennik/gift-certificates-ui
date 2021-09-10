@@ -1,5 +1,5 @@
-export class Tag{
-    id?:number;
-    name?:string;
-    picture?:string;
+export class Tag {
+    id?: number;
+    name?: string;
+    picture?: string;
 }

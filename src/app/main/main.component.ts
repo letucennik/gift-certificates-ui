@@ -14,6 +14,8 @@ import { OrderItem } from '../model/order-item';
 import { OrderRequest } from '../model/order-request';
 import { Order } from '../model/order';
 import { AuthenticationService } from '../_services/authentication.service';
+import { HostListener } from '@angular/core';
+import { useAnimation } from '@angular/animations';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -45,6 +47,7 @@ export class MainComponent implements OnInit {
   giftCertificate: GiftCertificate = new GiftCertificate();
   orderItem: OrderItem = new OrderItem();
   orderRequest: OrderRequest = new OrderRequest();
+  userOrder?: Order;
   orders?: Order[] = [];
   usedCertificates: number[] = [];
 
@@ -59,8 +62,16 @@ export class MainComponent implements OnInit {
       CertificateService.partInfo = AppService.token;
       this.search();
     })
-
+    this.orderService.findAllUserOrders().subscribe(
+      response => {
+        if (response.length != 0) {
+          this.userOrder = response[0];
+        } 
+      }
+    )
+    console.log(this.userOrder);
   }
+
 
   ngOnInit(): void {
     this.getCertificates();
@@ -95,15 +106,21 @@ export class MainComponent implements OnInit {
       this.orderItem!.giftCertificate = this.giftCertificate;
       this.orderItem!.quantity = quantity;
       this.orderItems.push(this.orderItem!);
-      this.orderRequest.certificates = this.orderItems;
-      this.orderService.createOrder(this.orderRequest).subscribe(
-        response => {
-          console.log(response);
-        }
-      );
+      if (this.userOrder === undefined) {
+        this.orderRequest.certificates = this.orderItems;
+        this.orderService.createOrder(this.orderRequest).subscribe(
+          response1 => {
+            this.userOrder = response1;
+          }
+        );
+        return;
+      }
+      this.orderService.addItemToOrder(this.userOrder?.id!, this.orderItem).subscribe();
     }
     this.usedCertificates.push(id);
   }
+
+
 
   filter(str: string) {
     this.certificates = [];
@@ -143,10 +160,10 @@ export class MainComponent implements OnInit {
   getCertificates() {
     this.certificateService.findAll(this.page, this.size).subscribe(response => {
       this.allCertificates = response.reverse();
-      this.size=response.length;
+      this.size = response.length;
       for (let i = 0; i < this.deltaSize; i++) {
-        if(this.allCertificates[i]!=undefined){
-        this.certificates.push(this.allCertificates[i]);
+        if (this.allCertificates[i] != undefined) {
+          this.certificates.push(this.allCertificates[i]);
         }
       }
     })
@@ -162,16 +179,17 @@ export class MainComponent implements OnInit {
   }
 
   showNext() {
-    console.log(this.allCertificates.length+"lala"+this.certificates.length);
+    console.log(this.allCertificates.length + "lala" + this.certificates.length);
     if (this.allCertificates.length >= this.certificates.length) {
-      for (let i = this.deltaSize; i < this.deltaSize+4; i++) {
-        setTimeout(() =>{
-          if(this.allCertificates[i]!=undefined){
-           this.certificates.push(this.allCertificates[i])
-          }; },1000);
+      for (let i = this.deltaSize; i < this.deltaSize + 4; i++) {
+        setTimeout(() => {
+          if (this.allCertificates[i] != undefined) {
+            this.certificates.push(this.allCertificates[i])
+          };
+        }, 1000);
       }
-      this.deltaSize+=4;
-    } else{
+      this.deltaSize += 4;
+    } else {
       this.notEmptyCertificate = true;
     }
     setTimeout(() => {

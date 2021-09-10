@@ -4,5 +4,5 @@ export class LoginResponse {
   login?: string;
   token?: string;
   role?: Role;
-  userId?:number;
+  userId?: number;
 }

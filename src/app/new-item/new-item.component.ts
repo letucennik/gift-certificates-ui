@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GiftCertificate } from '../model/gift-certificate';
 import { CertificateService } from '../_services/certificate.service';
 import { Tag } from '../model/tag';
@@ -13,7 +13,7 @@ export class NewItemComponent implements OnInit {
   certificateForm?: FormGroup;
   tags: string[] = [];
   tagName?: string;
-  picture?:string;
+  picture?: string;
   constructor(private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -21,22 +21,22 @@ export class NewItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.certificateForm = this.formBuilder.group({
-      name: ['',[ Validators.required,Validators.minLength(6)]],
+      name: ['', [Validators.required, Validators.minLength(6)]],
       price: ['', Validators.required],
       duration: ['', Validators.required],
-      description: ['', [ Validators.required,Validators.minLength(6)]],
+      description: ['', [Validators.required, Validators.minLength(6)]],
       category: ['', Validators.nullValidator],
-      picture:['']
+      picture: ['']
     });
   }
-  onSubmit(event:any): void {
+  onSubmit(event: any): void {
     const certificateTags = this.tags.map(tagName => {
       const tag = new Tag();
       tag.name = tagName;
       return tag;
     });
-    this.picture=event.target.picture.value;
-    this.picture="assets/"+this.picture!.replace(/^.*\\/, "")
+    this.picture = event.target.picture.value;
+    this.picture = "assets/" + this.picture!.replace(/^.*\\/, "")
     const giftCertificate: GiftCertificate = {
       id: undefined,
       name: this.certificateForm!.get('name')!.value,
@@ -46,7 +46,7 @@ export class NewItemComponent implements OnInit {
       createDate: undefined,
       lastUpdateDate: undefined,
       tags: certificateTags,
-      picture:this.picture
+      picture: this.picture
     };
 
     console.log(giftCertificate);
@@ -67,7 +67,7 @@ export class NewItemComponent implements OnInit {
   deleteCertificateCategory(tagName: any): void {
     this.tags = this.tags.filter(t => t !== tagName);
   }
- 
+
   redirectToAllCertificates(): void {
     this.router.navigateByUrl('');
   }

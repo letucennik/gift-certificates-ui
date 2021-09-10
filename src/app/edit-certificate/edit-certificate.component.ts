@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CertificateService } from '../_services/certificate.service';
 import { Tag } from '../model/tag';
 import { GiftCertificate } from '../model/gift-certificate';
@@ -15,18 +15,18 @@ export class EditCertificateComponent implements OnInit {
   tagName?: string;
   private certificateId?: number;
 
-  constructor( private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private giftCertificateService:CertificateService) { }
+    private giftCertificateService: CertificateService) { }
 
   ngOnInit(): void {
     this.certificateForm = this.formBuilder.group({
       id: ['', Validators.nullValidator],
-      name: ['',[ Validators.required,Validators.minLength(6)]],
+      name: ['', [Validators.required, Validators.minLength(6)]],
       price: ['', Validators.required],
       duration: ['', Validators.required],
-      description: ['', [ Validators.required,Validators.minLength(6)]],
+      description: ['', [Validators.required, Validators.minLength(6)]],
       category: ['', Validators.nullValidator],
     });
     this.certificateId = this.activatedRoute.snapshot.params.id;
@@ -65,7 +65,7 @@ export class EditCertificateComponent implements OnInit {
     });
 
     const giftCertificate: GiftCertificate = {
-      id:this.certificateId,
+      id: this.certificateId,
       name: this.certificateForm!.get('name')!.value,
       description: this.certificateForm!.get('description')!.value,
       price: this.certificateForm!.get('price')!.value,
@@ -83,7 +83,7 @@ export class EditCertificateComponent implements OnInit {
   }
 
   redirectToAllCertificates(): void {
-   this.router.navigateByUrl('');
+    this.router.navigateByUrl('');
   }
 
 }

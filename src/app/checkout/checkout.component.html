@@ -1,80 +1,45 @@
 <div class="name">
     <h3>Checkout</h3>
-</div> 
+</div>
 <div class="container mt-5 mb-5">
     <div class="d-flex justify-content-center row">
         <div class="col-md-8">
-            <div *ngFor="let order of orders" class="d-flex flex-row justify-content-between align-items-center p-2 bg-white  px-3">
-                <div class="mr-1"><img  src="{{order.certificates![0].giftCertificate?.picture}}" width="70"></div>
-                <div style="width: 50px;" class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">{{order.certificates[0].giftCertificate.name}}</span>
-                  
+            <div *ngFor="let certificate of order.certificates;"
+                class="d-flex flex-row justify-content-between align-items-center p-2 bg-white  px-3">
+                <div class="mr-1"><img src="{{certificate.giftCertificate?.picture}}" width="70"></div>
+                <div style="width: 50px;" class="d-flex flex-column align-items-center product-details"><span
+                        class="font-weight-bold">{{certificate.giftCertificate.name}}</span>
+
                 </div>
                 <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
-                    <h6>{{order.certificates[0].giftCertificate.description}}</h6><i class="fa fa-plus text-success"></i>
+                    <h6>{{certificate.giftCertificate.description}}</h6><i class="fa fa-plus text-success"></i>
                 </div>
                 <div>
-                    <h5 class="text-grey">${{order.cost}}</h5>
+                    <h5 class="text-grey">${{certificate.giftCertificate.price}}</h5>
                 </div>
                 <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
             </div>
-            <!-- <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white  px-3">
-                <div class="mr-1"><img src="assets/grey.jpg" width="70"></div>
-                <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
-                </div>
-                <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
-                    <h6>Some brief description</h6><i class="fa fa-plus text-success"></i>
-                </div>
-                <div>
-                    <h5 class="text-grey">$20.00</h5>
-                </div>
-                <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
-            </div>
+            <hr>
             <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white px-3">
-                <div class="mr-1"><img src="assets/grey.jpg" width="70"></div>
-                <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
-    
+                <p><b>Total</b></p>
+                <div class="mr-1"></div>
+                <div class="d-flex flex-column align-items-center product-details">
                 </div>
                 <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
-                    <h6>Some brief description</h6><i class="fa fa-plus text-success"></i>
                 </div>
-                <div>
-                    <h5 class="text-grey">$20.00</h5>
+                <div style="padding-left: 55%;">
+                    <h5><b>${{overallCost}}</b></h5>
                 </div>
                 <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
             </div>
-            <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white px-3">
-                <div class="mr-1"><img src="assets/grey.jpg" width="70"></div>
-                <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
-                </div>
-                <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
-                    <h6>Some brief description</h6><i class="fa fa-plus text-success"></i>
-                </div>
-                <div>
-                    <h5 class="text-grey">$20.00</h5>
-                </div>
-                <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
-            </div> -->
-           <hr>
-           <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white px-3">
-               <p><b>Total</b></p>
-               <div class="mr-1"></div>
-               <div class="d-flex flex-column align-items-center product-details">
-               </div>
-               <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
-               </div>
-               <div style="padding-left: 55%;">
-                   <h5><b>${{overallCost}}</b></h5>
-               </div>
-               <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
-           </div>
         </div>
     </div>
     <div class="footer">
-    <div class="btn">
-        <button type="button" class="btn btn-secondary">Back</button>
-          </div>
-          <div class="btn">
-        <button (click)="submit()" type="button" class="btn btn-success">Submit</button>
+        <div class="btn">
+            <button type="button" class="btn btn-secondary">Back</button>
+        </div>
+        <div class="btn">
+            <button (click)="submit()" type="button" class="btn btn-success">Submit</button>
+        </div>
     </div>
-</div>
 </div>

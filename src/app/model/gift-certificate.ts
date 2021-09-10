@@ -1,6 +1,6 @@
-import {Tag} from "./tag";
+import { Tag } from "./tag";
 
-export class GiftCertificate{
+export class GiftCertificate {
     id?: number;
     name?: string;
     description?: string;

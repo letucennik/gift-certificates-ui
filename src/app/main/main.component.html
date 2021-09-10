@@ -52,10 +52,14 @@
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <hr>
-                            <div >
+                            <div>
                                 <span class="left"><b>${{certificate.price}}</b></span>
-                                <span *ngIf="authService.hasRole('USER')"   class="right"><a (click)="addToCart(certificate.id,1)" class="btn btn-outline-dark" href="#">Add to cart</a></span>
-                                <span *ngIf="authService.hasRole('ADMIN')"   class="right"><a (click)="deleteCertificate(certificate.id)" class="btn btn-outline-dark" href="#">Delete item</a></span>
+                                <span *ngIf="authService.hasRole('USER')" class="right"><a
+                                        (click)="addToCart(certificate.id,1)" class="btn btn-outline-dark" href="#">Add
+                                        to cart</a></span>
+                                <span *ngIf="authService.hasRole('ADMIN')" class="right"><a
+                                        (click)="deleteCertificate(certificate.id)" class="btn btn-outline-dark"
+                                        href="#">Delete item</a></span>
                             </div>
 
                         </div>

@@ -24,8 +24,9 @@
 
         <mat-form-field appearance="outline" class="form-group">
           <mat-label>Price</mat-label>
-          <input matInput  type="number" min="1" max="10000"
-          onkeypress="return event.charCode >= 48 && event.charCode <= 57" step="1" value="1" min="1" max="10000" formControlName="price">
+          <input matInput type="number" min="1" max="10000"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57" step="1" value="1" min="1" max="10000"
+            formControlName="price">
           <mat-error *ngIf="certificateForm.get('price').hasError('required')">
             Price is <strong>required</strong>
           </mat-error>
@@ -33,7 +34,8 @@
 
         <mat-form-field appearance="outline" class="form-group">
           <mat-label>Duration In Days</mat-label>
-          <input matInput   type="number"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" step="1" value="1" min="1" max="200"formControlName="duration">
+          <input matInput type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" step="1"
+            value="1" min="1" max="200" formControlName="duration">
           <mat-error *ngIf="certificateForm.get('duration').hasError('required')">
             Duration is <strong>required</strong>
           </mat-error>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
 .name{
     width: 100%;
     background-color:rgb(210, 233, 236);
@@ -10,7 +11,6 @@
     margin-left: 55%;
     padding-left: 7%;
 }
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
 
 body {
     font-family: 'Manrope', sans-serif;

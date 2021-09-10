@@ -9,34 +9,32 @@ import { Order } from '../model/order';
 })
 export class CheckoutComponent implements OnInit {
 
-  orders:Order[]=[];
-  overallCost:number=0;
+  order?: Order;
+  overallCost: number = 0;
 
-  constructor(private orderService:OrderService) { 
+  constructor(private orderService: OrderService) {
   }
 
   ngOnInit(): void {
-    this.getOrders();
+    this.getOrder();
     console.log(this.overallCost);
   }
 
-  getOrders(){
+  getOrder() {
     this.orderService.findAllUserOrders().subscribe(
-      response=>{
-        this.orders=response;
-        response.forEach(x=>this.overallCost+=x.cost!);
+      response => {
+        this.order = response[0];
+        for (let cert of this.order!.certificates!) {
+          console.log(cert);
+          this.overallCost += cert!.giftCertificate!.price!;
+        }
       }
     )
   }
 
-  submit(){
-   this.orders.forEach(order=>this.orderService.changeStatus(order.id!).subscribe(
-     response=>{
-      order=response;
-     }
-   ));
-   window.location.reload();
-   
+  submit() {
+    this.orderService.changeStatus(this.order!.id!).subscribe();
+    window.location.reload();
   }
 
 }

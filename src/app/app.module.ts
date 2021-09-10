@@ -33,26 +33,6 @@ const appRoutes: Routes = [
   {
     path: '',
     component: MainComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'new-item',
-    component: NewItemComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'details',
-    component: DetailsComponent
-  },
-  {
-    path: 'checkout',
-    component: CheckoutComponent
   }
 ]
 
