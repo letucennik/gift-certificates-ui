@@ -14,8 +14,7 @@ import { OrderItem } from '../model/order-item';
 import { OrderRequest } from '../model/order-request';
 import { Order } from '../model/order';
 import { AuthenticationService } from '../_services/authentication.service';
-import { HostListener } from '@angular/core';
-import { useAnimation } from '@angular/animations';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',

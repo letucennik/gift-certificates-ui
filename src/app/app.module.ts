@@ -14,7 +14,7 @@ import { MainComponent } from './main/main.component';
 import { DetailsComponent } from './details/details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import {  HttpClientModule } from "@angular/common/http";
 import { TagService } from './_services/tag.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -27,6 +27,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { EditCertificateComponent } from './edit-certificate/edit-certificate.component';
 import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ItemCostPipe } from './shared/pipe/item-cost.pipe';
 
 
 const appRoutes: Routes = [
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     EditCertificateComponent,
     ForbiddenComponent,
     NotFoundComponent,
+    ItemCostPipe
   ],
   imports: [
     BrowserModule,
