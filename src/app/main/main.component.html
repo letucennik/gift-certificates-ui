@@ -1,0 +1,81 @@
+<header class="bg-dark">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="rowHeader">
+
+            <div class="columnHeader" *ngFor="let tag of tags">
+                <a (click)="filter(tag.name)">
+                    <div class="image">
+                        <img class="image__img" src="{{tag.picture}}" alt="Snow">
+                        <div class="image__overlay">
+                            <p class="image__description">{{tag.name}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container px-4 px-lg-1 mt-5">
+        <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+            (scrolled)="onScroll()">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="col mb-5" *ngFor="let certificate of certificates">
+                    <div class="card h-100">
+                        <div class="zoom" (click)="redirectToCertificateDetails(certificate.id)">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="{{certificate.picture}}" alt="..." style="height: 200px;" />
+                        </div>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="name">
+                                <!-- Product name-->
+                                <span class="left">
+                                    <h5 class="fw-bolder">{{certificate.name}}</h5>
+                                </span>
+                                <!-- Some brief description  -->
+                                <a class="favourite" href="/">
+                                    <span class="right material-icons-outlined" style="color: gray; border: black;">
+                                        favorite
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="description">
+                                <span class="left"><b>{{certificate.description}}</b></span>
+                                <span class="right"> Expires in {{certificate.duration}} days</span>
+                            </div>
+
+                            <!-- <div class="text-center"></div> -->
+                        </div>
+
+
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <hr>
+                            <div>
+                                <span class="left"><b>${{certificate.price}}</b></span>
+                                <span *ngIf="authService.hasRole('USER')" class="right"><a
+                                        (click)="addToCart(certificate.id,1)" class="btn btn-outline-dark" href="#">Add
+                                        to cart</a></span>
+                                <span *ngIf="authService.hasRole('ADMIN')" class="right"><a
+                                        (click)="deleteCertificate(certificate.id)" class="btn btn-outline-dark"
+                                        href="#">Delete item</a></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row pb-5">
+        <div class="col-md-12 p-5">
+            <ngx-spinner bdOpacity=0.9 bdColor="" size="default" color="#581f87" type="ball-pulse-sync"
+                [fullScreen]="false"></ngx-spinner>
+        </div>
+    </div>
+</section>
+<footer>
+    <button #scrollToTopButton (click)="scrollToTop()">☝️</button>
+</footer>

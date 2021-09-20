@@ -1,0 +1,65 @@
+<div class="content-wrapper">
+  <div class="registration-form">
+    <div class="form-header">
+      <div class="title">
+        <span>Register</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-body">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+    <div>
+
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="name">
+        <mat-error *ngIf=" signUpForm.get('name').hasError('email') && !signUpForm.get('name').hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('name').hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error
+          *ngIf=" signUpForm.get('password').hasError('minlength') && !signUpForm.get('password').hasError('required')">
+          The password must be of minimum length 6 characters
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Repeat password</mat-label>
+        <input matInput type="password" formControlName="repeatPassword">
+        <mat-error
+          *ngIf=" signUpForm.get('repeatPassword').hasError('minlength') && !signUpForm.get('repeatPassword').hasError('required')">
+          The password must be of minimum length 6 characters
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="signUpForm.get('repeatPassword').pristine || signUpForm.get('repeatPassword').errors?.MatchPassword">
+          Password does not match</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="badCredentials">User with such email already exists</div>
+    <div class="btn-group">
+      <button mat-button (click)="redirectToLoginPage()" class="btn btn-cancel">Already have an account</button>
+      <button mat-button type="submit" class="btn btn-submit">Sign Up</button>
+    </div>
+
+  </form>
+</div>
